@@ -1,0 +1,30 @@
+.coords {
+	display: grid;
+	grid-gap: .5em;
+}
+
+/* Content */
+.coords__content {
+	margin: 0;
+}
+
+/* Value */
+.coords__value {
+	margin: 0;
+	font-weight: 1000;
+}
+.coords__value--nether {
+	color: var(--branch);
+}
+
+/* Before */
+.coords__value::before {
+	font-weight: 400;
+	color: var(--text)
+}
+.coords__value--nether::before {
+	content: "Нижний мир ~~> "
+}
+.coords__value--overworld::before {
+	content: "Верхний мир --> "
+}

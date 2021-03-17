@@ -1,0 +1,18 @@
+{
+    "type": "other",
+    "name": "IQ",
+    "mayor": "AkulaFrench",
+    "branch": "red",
+    "nether": {
+        "x": -15,
+        "z": 69
+    },
+    "overworld": {
+        "x": 0,
+        "y": 68,
+        "z": 0
+    },
+    "description": "Кофейня с самым вкусным кофе!",
+    "marks": ["cafe"],
+    "pictures": "true"
+}

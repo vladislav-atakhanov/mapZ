@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru" class="">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Карта SPBedrock</title>
+	<link rel="stylesheet" href="styles/index.css">
+</head>
+<body class="page__body">
+
+	<main class="map">
+		<canvas class="map__canvas"></canvas>
+		<p class="map__mouse"></p>
+	</main>
+
+	<section class="info">
+		<button class="info__btn btn btn--close" aria-label="Закрыть информацию">&times;</button>
+
+		<div class="info__heading heading">
+			<h2 class="heading__title">Title</h2>
+			<p class="heading__subtitle">Subtitle</p>
+		</div>
+
+
+		<div class="info__coords coords">
+			<p class="coords__value coords__value--nether">0 0 0</p>
+			<p class="coords__value coords__value--overworld">0 0 0</p>
+		</div>
+
+		<a href="dot/#" class="info__link"><span>Подробнее</span> </a>
+
+		<picture class="info__picture picture">
+			<img src="pictures/1200.jpg" alt="Aksu" class="picture__img">
+			<div class="info__branch"></div>
+		</picture>
+	</section>
+
+	<script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+@import "info/heading.css";
+@import "info/picture.css";
+@import "info/coords.css";
+
+.info {
+	position: fixed;
+	top: 0; left: 0;
+	margin: 1em;
+	background-color: var(--bg);
+
+	max-width: 350px;
+
+	padding: 1em;
+	box-shadow: 0 0 1em 0 rgb(0 0 0 / .5);
+	overflow-y: auto;
+	border-radius: 1em;
+
+	display: grid;
+	grid-gap: 1em;
+	display: none
+}
+.info__heading {
+	margin-top: 0
+}
+
+.info__branch {
+	height: 2rem;
+	width: 100%;
+	z-index: -1;
+	transform: translateY(-1rem);
+	position: absolute;
+	background-color: var(--branch);
+	border-radius: inherit;
+	opacity: .5;
+}
+
+.info__btn {
+	margin: 0;
+	position: absolute;
+	top: 1rem; right: 1rem;
+	transition: transform .5s;
+	outline: none;
+	background-color: var(--branch);
+	opacity: .5;
+	color: #222
+}
+
+.info__btn:hover,
+.info__btn:focus-visible {
+	transform: scale(1.2);
+	opacity: 1;
+}
+.info__btn:focus-visible {
+	box-shadow: 0 0 0 2px var(--text);
+}
+
+.info__picture {
+	margin: -1em;
+	margin-bottom: 1rem;
+	order: -1;
+	border-radius: 0 0 1rem 1rem;
+}
+
+/* Link */
+.info__link {
+	color: var(--branch, var(--blue, blue));
+	text-decoration: none;
+	font-weight: 600;
+	width: max-content;
+	margin-left: auto;
+	display: block;
+}
+.info__link::after {
+	content: "-->";
+	margin-left: 0.6em;
+	color: var(--text)
+}
+
+.info__link:hover:after {
+	content: "->>";
+	color: inherit
+}
+
+.info__link span {
+	text-decoration: underline;
+}
+.info__link:hover span {
+	text-decoration: none;
+}

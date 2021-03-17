@@ -1,0 +1,50 @@
+*, *::before, *::after {
+	box-sizing: border-box
+}
+
+:root {
+	--white: #fff;
+	--black: #000;
+
+	--red: #ef161e;
+	--green: #2dbe2c;
+	--blue: #0078be;
+	--yellow: #ffd702;
+	--purple: #a652bb;
+
+	--bg: var(--white);
+	--text: #222;
+}
+
+/* Dark theme */
+.page--dark {
+	--bg: #2C2F33;
+	--text: #ddd;
+}
+
+.page__body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	height: 100vh;
+	font-family: "JetBrains Mono", monospace;
+	color: var(--text);
+	background-color: var(--bg)
+}
+.visually-hidden {
+	position: absolute;
+	top: 0;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+	clip: rect(0 0 0 0)
+}
+
+.output {
+	position: fixed;
+	top: 0;
+	right: 0;
+}

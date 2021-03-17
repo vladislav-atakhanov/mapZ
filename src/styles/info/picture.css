@@ -1,0 +1,9 @@
+.picture {
+	display: block;
+	overflow: hidden
+}
+
+.picture__img {
+	max-width: 100%;
+	display: block;
+}

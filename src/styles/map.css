@@ -1,0 +1,20 @@
+.map {
+
+}
+
+
+/* Canvas */
+
+.map__canvas {
+	display: block
+}
+
+
+/* Mouse */
+
+.map__mouse {
+	position: absolute;
+	top: 0; right: 0;
+	margin: 0;
+	opacity: .5
+}
