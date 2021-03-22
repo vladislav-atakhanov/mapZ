@@ -17,7 +17,11 @@
 
 	display: grid;
 	grid-gap: 1em;
-	display: none
+	transition: all .25s;
+	transform: translateX(calc(-100% - 2em))
+}
+.info--opened {
+	transform: translateX(0%)
 }
 .info__heading {
 	margin-top: 0

@@ -1,5 +1,5 @@
-import { clamp, getColor } from "./global"
-import Icons from "../icons"
+import { getColor } from "./global"
+import Dots from "../dots"
 
 
 class IElement {
@@ -15,75 +15,46 @@ export class Dot extends IElement {
 			this[key] = dot[key]
 		})
 		this.size = sizeFromType(this.type)
-		this.fontSize = scale => clamp(this.size / scale, this.size, this.size * 2)
+		this.dot = Dots[this.type]
 	}
-	draw({ctx, w, h, scale}) {
-
-		let fontSize = this.fontSize(scale)
-		let s = this.size
-
+	draw({ctx, w, h, scale}, hover) {
 		let x = this.nether[0] + w/2,
 			y = this.nether[1] + h/2
 
-		let circle = this.circle = {
-			x,
-			y,
-			r: s
-		}
 
-		ctx.lineWidth = clamp(1 / scale, 1 / scale, 2)
-		this.drawBody(
-			ctx,
-			{
-				x: circle.x,
-				y: circle.y,
-				r: s
-			}, "stroke"
-		)
-	}
-	drawBody(ctx, circle, mode="fill") {
-		let type = this.type
-		if (Icons[type]) {
-			Icons[type](ctx, circle, mode, getColor(this.branch))
-		} else {
-			ctx[mode + "Style"] = getColor(this.branch)
-			ctx.beginPath()
-			ctx.arc(
-				circle.x,
-				circle.y,
-				circle.r,
-				0,
-				6.284
-			)
-			ctx.closePath()
-			ctx[mode]()
+		if (this.dot) {
+			let config = {w, h, scale, ctx}
+			this.dot.draw(this, config, hover)
+		}
+		else {
+			ctx.fillStyle = getColor(this.branch)
+			ctx.fillRect(x - this.size/2, y - this.size/2, this.size, this.size)
 		}
 	}
-	drawHover({ctx, scale}) {
-		let circle = this.circle
+	isHover(mouse, {w, h, scale, ctx}) {
+		if (this.dot) {
+			this.hitbox = this.dot.hitbox(this, {w, h, scale, ctx})
 
-		this.drawBody(ctx, {
-			x: circle.x,
-			y: circle.y,
-			r: circle.r
-		})
-	}
-	drawTitle({ctx, fontSize, x, y}) {
-		ctx.font = fontSize + "px JetBrains Mono, monospace"
-		ctx.textAlign = "center"
-		ctx.fillText(this.title[0], x, y)
-	}
-	isHover(mouse, {w, h}) {
-		let r = this.circle.r
-		return isDotInRect(
-			mouse,
-			{
-				x: this.circle.x - w/2 - r,
-				y: this.circle.y - h/2 - r,
-				w: r*2,
-				h: r*2
+			ctx.lineWidth = 1 / scale
+			ctx.strokeStyle = "blue"
+
+			// hitbox
+			// this.hitbox.forEach(hitbox => ctx.strokeRect(hitbox.x, hitbox.y, hitbox.w, hitbox.h))
+
+			if (this.dot.isHover) return this.dot.isHover(mouse, this.hitbox)
+			for (let i = 0; i < this.hitbox.length; i++) {
+				let hitbox = this.hitbox[i];
+				let hit = isDotInRect(mouse, {
+					x: hitbox.x - w/2,
+					y: hitbox.y - h/2,
+					w: hitbox.w,
+					h: hitbox.h,
+				})
+				if (hit) return hit
 			}
-		)
+		}
+
+		if (!this.hitbox) return false
 	}
 	isInViewBox(viewBox, {w, h}) {
 		return isDotInRect({
@@ -94,11 +65,10 @@ export class Dot extends IElement {
 }
 function sizeFromType(type) {
 	switch (type) {
-		case "end": return 2
-		case "town": return 4
-		case "city": return 5
-		case "hub": return 6
-		default: return 3
+		case "town": return 3
+		case "city": return 4
+		case "hub": return 16
+		default: return 4
 	}
 }
 

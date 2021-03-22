@@ -23,8 +23,5 @@
 	color: var(--text)
 }
 .coords__value--nether::before {
-	content: "Нижний мир ~~> "
-}
-.coords__value--overworld::before {
-	content: "Верхний мир --> "
+	content: "Координаты ~~> "
 }

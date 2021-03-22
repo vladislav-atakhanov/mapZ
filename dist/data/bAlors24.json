@@ -1,0 +1,18 @@
+{
+    "type": "base",
+    "mayor": "Alors24",
+    "branch": "green",
+    "nether": {
+        "x": -1746,
+        "z": -53
+    },
+    "overworld": {
+        "x": -13962,
+        "y": 78,
+        "z": -419
+    },
+    "residents": ["Neu3al", "Pomtness", "Nikoid", "DareDevilSH", "Udavvv", "T1ma05", "SvetlayaHaru", "RiverMarrow7717", "Poldik", "naritira", "MrObezyanka", "Flovar", "DeniedChalk2249", "DeglonKuN", "CozyDyrak", "Kola 4pok", "MrDragonsSQ", "Pozzaza", "lemonokrab", "PX shuh3r", "hoance", "mrkrotniy", "Genuine Paragon", "Alors24"],
+    "custom": {
+        "residents": "Анимешники"
+    }
+}

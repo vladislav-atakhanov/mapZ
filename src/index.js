@@ -1,11 +1,11 @@
-import Hammer from "./scripts/hammer.js"
-import SPBedrockMap from "./scripts/classes/SPBedrockMap.js"
-import Information from "./scripts/classes/Information.js"
+import Hammer from "./scripts/hammer"
+import Map from "./scripts/classes/Map"
+import Information from "./scripts/classes/Information"
 
 let map, info
 (async () => {
 	let data = await fetch("data.json").then(r => r.json())
-	map = new SPBedrockMap(data)
+	map = new Map(data)
 	info = new Information()
 	map.info = info
 
